@@ -1,0 +1,116 @@
+{% load static %}
+
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link rel = stylesheet href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel = stylesheet href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="{% static './css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- nice selecy -->
+  <link rel="stylesheet" href="{% static './css/nice-select.min.css' %}">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="{% static './css/font-awesome.min.css' %}" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="{% static './css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static './css/responsive.css' %}" rel="stylesheet" />
+
+
+
+
+
+</head>
+<body>
+
+<div class="hero_area">
+    <div class="bg-box">
+      <img src="{% static './images/pk1.jpg' %}" alt="">
+    </div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              Paspark
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item active">
+                <a class="nav-link" href="/user_home">Home <span class="sr-only">(current)</span></a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/user_add_vehicle">Add Vehicle</a>
+              </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/logout">logout </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/allparking">All Parking  </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/mybook">my booking  </a>
+              </li>
+            </ul>
+
+          </div>
+        </nav>
+      </div>
+    </header>
+
+
+    <table bgcolor="#E6E6FA" class='table table-hover' id = example>
+        <thead>
+       
+
+          <tr>
+            <th bgcolor="white" scope="col">#</th>
+            <th bgcolor="white"scope="col">slotno</th>
+            <th bgcolor="white"scope="col">vehicle reg no</th>
+            <th bgcolor="white"scope="col">Park Name</th>
+            <th bgcolor="white"scope="col">Location</th>
+            <th bgcolor="white"scope="col">Intime</th>
+            <th bgcolor="white"scope="col">Outtime</th>
+            <th bgcolor="white"scope="col">status</th>
+            <th bgcolor="white"scope="col">action</th>
+              <th bgcolor="white"scope="col">parkingcharge</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in book %}
+          <tr>
+            <th bgcolor="white"scope="row">{{forloop.counter}}</th>
+            <td bgcolor="white">{{i.slot.slot_no}}</td>
+            <td bgcolor="white">{{i.vehicle.regno}}</td>
+            <td bgcolor="white">{{ i.slot.parking.park_name }}</td>
+            <td bgcolor="white">{{ i.slot.parking.location }}</td>
+            <td bgcolor="white">{{i.intiime}}</td>
+            <td bgcolor="white">{{i.outtime}}</td>
+              <td bgcolor="white">{{i.parkingcharge}}</td>
+            <td bgcolor="white">{{i.status}}</td>
+            {% if i.status == "Booked" %}
+            <td bgcolor="white"><a href="/out/{{i.id}}"> <button type="button" class="btn btn-danger">out now </button></a></td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+</body>
+</html>
