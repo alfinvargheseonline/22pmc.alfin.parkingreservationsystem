@@ -1,0 +1,168 @@
+{% load static %}
+<html>
+<head>
+{% include 'headeradmin.html' %}
+<link rel="stylesheet" href="{% static './css/nice-select.min.css' %}">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="{% static './css/font-awesome.min.css' %}" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="{% static './css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static './css/responsive.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="hero_area">
+    <div class="bg-box">
+      <img src="{% static './images/slider-bg.jpg' %}" alt="">
+    </div>
+    <!-- header section strats -->
+    <header class="header_section">
+</header>
+<body>
+{% include 'nav2admin.html' %}
+<br> &nbsp;&nbsp;Welcome <b style = 'text-transform : capitalize ; color : blue'>{{request.user.username}}</b>
+
+
+<div class="container" style = "margin-top:50px">
+<h2 class="text-center" style = "font-family : Monotype Corsiva ; color : white"><strong>Add</strong> Vehicle Detail</h2>
+
+<div class="form-group">
+<form method = post enctype = "multipart/form-data">
+    {% csrf_token %}
+
+    <label style = "color : #E6E6FA"><b>Parking_id</b></label>
+ <input type="number" style="width: 500px;" name="parking_id" placeholder="parking_id" class="form-control" required="">
+
+     <label style = "color : #E6E6FA" ><b>location</b></label>
+
+      <input type="text"  style="width: 500px;" name="location" placeholder="location" class="form-control"  required="">
+
+<label style = "color : #E6E6FA"><b>street</b></label>
+ <input type="text" style="width: 500px;" onkeypress="return allowOnlyLetters(event,this);" name="street" placeholder="street" class="form-control"  required="">
+
+     <label style = "color : #E6E6FA" ><b>park_name</b></label>
+    <input type="text" style="width: 500px;" onkeypress="return allowOnlyLetters(event,this);" name="park_name" placeholder="park_name" maxlength="10" class="form-control" required="">
+
+     <label style = "color : #E6E6FA" ><b>slot</b></label>
+<input type="number"  style="width: 500px;" name="slot"  class="form-control" required="">
+
+    <label style = "color : #E6E6FA" ><b>remaining_slot</b></label>
+<input type="number"  style="width: 500px;" name="remaining_slot"  class="form-control" required="">
+    <label style = "color : #E6E6FA" ><b>price</b></label>
+
+<input type="number"  style="width: 500px;" name="price"  class="form-control" required="">
+
+   
+<br>
+<input type = submit style="width: 500px;" name = submit value = "Submit" class="btn btn-primary form-control" >
+</form>
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+<script language="Javascript" type="text/javascript">
+
+function allowOnlyLetters(e, t)
+{
+   if (window.event)
+   {
+      var charCode = window.event.keyCode;
+   }
+   else if (e)
+   {
+      var charCode = e.which;
+   }
+   else { return true; }
+   if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+       return true;
+   else
+   {
+      alert("Please enter only alphabets");
+      return false;
+   }
+}
+function isNumberKey(evt, obj) {
+
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            var value = obj.value;
+            var dotcontains = value.indexOf(".") != -1;
+            if (dotcontains)
+                if (charCode == 46) return false;
+            if (charCode == 46) return true;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+function ValidateEmail(mail){
+    	//  alert("You have entered an invalid email address!")
+    	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail.value)){
+    		return (true);
+    	}
+    	alert("You have entered an invalid email address!");
+    	return (false);
+	}
+
+
+const pwd = document.querySelector("#pwd");
+         const pwd_1 = document.querySelector("#pwd_1");
+         const errorText = document.querySelector(".error-text");
+         const showBtn = document.querySelector(".show");
+         const btn = document.querySelector("button");
+         function active(){
+           if(pwd.value.length >= 6){
+             btn.removeAttribute("disabled", "");
+             btn.classList.add("active");
+             pwd_1.removeAttribute("disabled", "");
+           }else{
+             btn.setAttribute("disabled", "");
+             btn.classList.remove("active");
+             pwd_1.setAttribute("disabled", "");
+           }
+         }
+         btn.onclick = function(){
+           if(pwd.value != pwd_1.value){
+             errorText.style.display = "block";
+             errorText.classList.remove("matched");
+             errorText.textContent = "Error! Confirm Password Not Match";
+             return false;
+           }else{
+             errorText.style.display = "block";
+             errorText.classList.add("matched");
+             errorText.textContent = "Nice! Confirm Password Matched";
+             return false;
+           }
+         }
+         function active_2(){
+           if(pwd_1.value != ""){
+             showBtn.style.display = "block";
+             showBtn.onclick = function(){
+               if((pwd.type == "password") && (pwd_1.type == "password")){
+                 pwd.type = "text";
+                 pwd_1.type = "text";
+                 this.textContent = "Hide";
+                 this.classList.add("active");
+               }else{
+                 pwd.type = "password";
+                 pwd_1.type = "password";
+                 this.textContent = "Show";
+                 this.classList.remove("active");
+               }
+             }
+           }else{
+             showBtn.style.display = "none";
+           }
+         }
+
+      </script>
+

@@ -1,0 +1,121 @@
+{% load static %}
+
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link rel = stylesheet href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel = stylesheet href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="{% static './css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- nice selecy -->
+  <link rel="stylesheet" href="{% static './css/nice-select.min.css' %}">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="{% static './css/font-awesome.min.css' %}" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="{% static './css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static './css/responsive.css' %}" rel="stylesheet" />
+
+
+
+
+
+</head>
+<body>
+
+<div class="hero_area">
+    <div class="bg-box">
+      <img src="{% static './images/slider-bg.jpg' %}" alt="">
+    </div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              Paspark
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+
+<div class="collapse navbar-collapse" id="abc" >
+<ul class="navbar-nav pl-5">
+<li class = "nav-item">
+<a href = "{% url 'admin_home' %}" class="nav-link" style = "color : white"><i class="fas fa-home">&nbsp;</i>Home</a>
+</li>
+
+
+<li class="nav-item dropdown">
+	  <a  href="#" class="nav-link dropdown-toggle" style="color:white;"  data-toggle="dropdown">Category</a>
+
+	  <div class="dropdown-menu">
+	  <a class="dropdown-item" href="{% url 'add_category' %}">Add Category</a>
+	    <a class="dropdown-item" href="{% url 'manage_category' %}">Manage Category</a>
+	 </div>
+	 </li>
+
+
+<li class="nav-item dropdown">
+	  <a  href="#" class="nav-link dropdown-toggle" style="color:white;"  data-toggle="dropdown">Vehicle</a>
+
+	  <div class="dropdown-menu">
+	  <a class="dropdown-item" href="{% url 'add_vehicle' %}">Add Vehicle</a>
+	    <a class="dropdown-item" href="{% url 'manage_incomingvehicle' %}">Manage In Vehicle</a>
+		  <a class="dropdown-item" href="{% url 'manage_outgoingvehicle' %}">Manage Out Vehicle</a>
+	 </div>
+	 </li>
+
+
+
+
+<li class = "nav-item">
+<a href = "{% url 'search' %}" class="nav-link" style = "color : white">Search</a>
+</li>
+
+<li class="nav-item dropdown">
+	  <a  href="#" class="nav-link dropdown-toggle" style="color:white;"  data-toggle="dropdown">Reports</a>
+
+	  <div class="dropdown-menu">
+	  <a class="dropdown-item" href="{% url 'betweendate_report' %}">B/W Date Report</a>
+
+	 </div>
+	 </li>
+
+	<li class = "nav-item">
+<a href = "{% url 'change_password' %}" class="nav-link" style = "color : white">Change Password</a>
+</li>
+
+   <li class = "nav-item">
+<a href = "/add_parkings" class="nav-link" style = "color : white">Add parkings</a>
+</li>
+
+       <li class = "nav-item">
+<a href = "/add_slot" class="nav-link" style = "color : white">Add slots</a>
+</li>
+
+
+<li class = "nav-item">
+<a href = "{% url 'logout' %}" class="nav-link" style = "color : white">Logout</a>
+</li>
+
+
+</ul>
+</div>
+
+</nav>
+
+      </div>
+    </header>
+    <center>

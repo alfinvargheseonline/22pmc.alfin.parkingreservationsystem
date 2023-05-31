@@ -1,0 +1,121 @@
+{% load static %}
+<html>
+<head>
+{% include 'headeradmin.html' %}
+
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body>
+<div class="container">
+    <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <address>
+                        <strong>Elf Cafe</strong>
+                        <br>
+                        2135 Sunset Blvd
+                        <br>
+                        Los Angeles, CA 90026
+                        <br>
+                        <abbr title="Phone">P:</abbr> (213) 484-6829
+                    </address>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                    <p>
+                        <em>Date: 1st November, 2013</em>
+                    </p>
+                    <p>
+                        <em>Receipt #: 34522677W</em>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    <h1>Receipt</h1>
+                </div>
+                </span>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td class="col-md-9"><em>Parking Number</em></h4></td>
+                            <td class="col-md-1 text-center">{{book.slot.slot_no}}</td>
+
+                        </tr>
+                        <tr>
+                            <td class="col-md-9"><em>Registration Number</em></h4></td>
+
+                            <td class="col-md-1 text-center">{{book.vehicle.regno}}</td>
+
+                        </tr>
+                        <tr>
+                            <td class="col-md-9"><em>Park Name</em></h4></td>
+
+                            <td class="col-md-1 text-center">{{book.slot.parking.park_name}}</td>
+                        </tr>
+                          <tr>
+                            <td class="col-md-9"><em>Location</em></h4></td>
+
+                            <td class="col-md-1 text-center">{{book.slot.parking.location}}</td>
+                        </tr>
+                          <tr>
+                            <td class="col-md-9"><em>In Time</em></h4></td>
+
+                            <td class="col-md-1 text-center">{{book.intiime}}</td>
+                        </tr>
+                          <tr>
+                            <td class="col-md-9"><em>Out time</em></h4></td>
+
+                            <td class="col-md-1 text-center">{{book.outtime}}</td>
+                        </tr>
+                        <tr>
+                            <td>  </td>
+                            <td>  </td>
+                            <td class="text-right">
+                            <p>
+                                <strong>Subtotal</strong>
+                            </p>
+
+
+                        </tr>
+                        <tr>
+                            <td>  </td>
+                            <td> </td>
+                            <td class="text-right"><h4><strong>Payment</strong></h4></td>
+                            <td class="text-center text-danger"><h4><strong>{{book.parkingcharge}}</strong></h4></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-success btn-lg btn-block">
+                    Pay Now<span class="glyphicon glyphicon-chevron-right"></span>
+                </button></td>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+def mybook(request):
+    u = request.session['user_id']
+    user = User_login.objects.get(id=u)
+
+    bookings = Booking.objects.filter(user=user)
+
+
+    for book in bookings:
+        start = book.intiime
+        end = book.outtime
+        difference = end - start
+        total_hours = difference.total_seconds() / 3600
+        parking_charge = total_hours * 100
+        book.parkingcharge = round(parking_charge)
+        book.save()
+        context = {'book': bookings}
+    return render(request, 'book.html', context)
