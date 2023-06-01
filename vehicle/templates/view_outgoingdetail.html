@@ -33,8 +33,13 @@ $(document).ready(function() {
 </script>
 
 </head>
+<<<<<<< HEAD
 <body background="{% static './images/about-img.jpg' %}" width="500" height="600">
 
+=======
+<body>
+{% include 'nav2admin.html' %}
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
 <br> &nbsp;&nbsp;Welcome <b style = 'text-transform : capitalize ; color : blue'>{{request.user.username}}</b>
 
 
@@ -42,6 +47,7 @@ $(document).ready(function() {
 <h2 class="text-center" style = "font-family : Monotype Corsiva ; color : red"> <strong>Vehicle</strong>  Details</h2>
 
 
+<<<<<<< HEAD
   <table bgcolor="#E6E6FA" border="1" class="table table-bordered mg-b-0">
                                             <tr>
     <th>Parking Number</th>
@@ -50,10 +56,21 @@ $(document).ready(function() {
    <tr>
     <th>Vehicle Category</th>
     <td>{{vehicle.vehicle.category}}</td>
+=======
+ <table border="1" class="table table-bordered">
+                                            <tr>
+    <th>Parking Number</th>
+    <td>{{vehicle.parkingnumber}}</td>
+  </tr>
+   <tr>
+    <th>Vehicle Category</th>
+    <td>{{vehicle.category}}</td>
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
   </tr>
 
   <tr>
     <th>Vehicle Company Name</th>
+<<<<<<< HEAD
     <td>{{vehicle.vehicle.vehiclecompany}}</td>
   </tr>
   <tr>
@@ -71,6 +88,25 @@ $(document).ready(function() {
   <tr>
     <th>In Time</th>
     <td>{{vehicle.vehicle.intime}}</td>
+=======
+    <td>{{vehicle.vehiclecompany}}</td>
+  </tr>
+  <tr>
+    <th>Registration Number</th>
+    <td>{{vehicle.regno}}</td>
+  </tr>
+  <tr>
+    <th>Owner Name</th>
+    <td>{{vehicle.ownername}}</td>
+  </tr>
+  <tr>
+    <th>Owner Contact Number</th>
+    <td>{{vehicle.ownercontact}}</td>
+  </tr>
+  <tr>
+    <th>In Time</th>
+    <td>{{vehicle.intime}}</td>
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
   </tr>
   <tr>
       <tr>
@@ -78,6 +114,14 @@ $(document).ready(function() {
     <td>{{vehicle.outtime}}</td>
   </tr>
 
+<<<<<<< HEAD
+=======
+      <tr>
+    <th>Remark</th>
+    <td>{{vehicle.remark}}</td>
+    </tr>
+
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
     <th>Status</th>
     <td>{{vehicle.status}}</td>
   </tr>

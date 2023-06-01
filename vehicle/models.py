@@ -75,13 +75,17 @@ class Slots(models.Model):
 
         super().save(*args, **kwargs)
 
+<<<<<<< HEAD
     def __str__(self):
         return self.parking
 
+=======
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
 class Booking(models.Model):
     user=models.ForeignKey(User_login,on_delete=models.CASCADE)
     slot=models.ForeignKey(Slots,on_delete=models.CASCADE)
     intiime=models.DateTimeField()
+<<<<<<< HEAD
     outtime=models.DateTimeField(default=timezone.now)
     vehicle=models.ForeignKey(Vehicle,on_delete=models.CASCADE,null=True)
     status=models.CharField(max_length=50)
@@ -89,5 +93,13 @@ class Booking(models.Model):
 
     def __str__(self):
         return self.user
+=======
+    outtime=models.DateTimeField(null=True)
+    vehicle=models.ForeignKey(Vehicle,on_delete=models.CASCADE,null=True)
+
+    
+    status=models.CharField(max_length=50)
+
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
 
 

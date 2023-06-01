@@ -54,11 +54,16 @@ path('all/<int:id>',all_park,name="all"),
 path('slots',slots),
 path('book_slot',book_slot),
 path('mybook',mybook),
+<<<<<<< HEAD
 path('out/<int:pk>',out),
 path('user_print2',user_print2,name='user_print2'),
 path('payment',payment),
 path('add_parkings',add_parkings),
 path('add_slot',add_slot),
 path('total',total),
+=======
+path('out/<int:pk>',out)
+
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
 
 ]

@@ -58,6 +58,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="/user_add_vehicle">Add Vehicle</a>
               </li>
+<<<<<<< HEAD
 
               <li class="nav-item">
                 <a class="nav-link" href="/mybook">my booking  </a>
@@ -65,11 +66,23 @@
                 <li class="nav-item">
                 <a class="nav-link" href="/logout">logout </a>
               </li>
+=======
+                <li class="nav-item">
+                <a class="nav-link" href="/logout">logout </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/allparking">All Parking  </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/mybook">my booking  </a>
+              </li>
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
             </ul>
 
           </div>
         </nav>
       </div>
+<<<<<<< HEAD
 
     </header>
      <section class="slider_section ">
@@ -167,6 +180,55 @@
     </div>
   </section>
 </div>
+=======
+    </header>
+
+<br> &nbsp;&nbsp;Welcome <b style = 'text-transform : capitalize ; color : blue'>{{username}}</b>
+
+
+<div class="container" style = "margin-top:10px">
+<h2 class="text-center" style = "font-family : Monotype Corsiva ; color : #E6E6FA">Vehicle Details</h2>
+<a href="/user_add_vehicle"><button type="button" class="btn btn-primary">Add Vehicle</button></a>
+<table bgcolor="#E6E6FA" class='table table-hover' id = example>
+<thead style = 'background-color : bgcolor="#E6E6FA" ; color : white'>
+<tr>
+<th>S.No.</th>
+<th>Parking Number</th>
+<th>Owner Name</th>
+    <th>Vehicle Reg No.</th>
+    <th>Action</th>
+</tr>
+</thead>
+
+<tbody bgcolor="#E6E6FA">
+  {% for i in vehicle %}
+<tr>
+                  <td>{{forloop.counter}}</td>
+
+                  <td>{{i.parkingnumber}}</td>
+                  <td>{{i.ownername}}</td>
+                <td>{{i.regno}}</td>
+
+                  <td>
+                      <a href="/user_view_outgoing/{{i.id }}" ><button type="button" class="btn btn-info">View</button></a>
+                     <a href="{% url 'user_print' i.id %}" ><button type="button" class="btn btn-info">Print</button></a>
+                      <td><a href="/user_edit/{{i.id}}" ><button type="button" class="btn btn-info">Edit</button></a></td>
+                  </td>
+                </tr>
+
+{% endfor %}
+</tbody>
+
+</table>
+
+
+
+
+</div>
+</div>
+</body>
+
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
 
     </body>
 </html>

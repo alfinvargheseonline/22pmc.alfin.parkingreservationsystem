@@ -72,9 +72,15 @@ $(document).ready(function() {
 <tr>
                   <td>{{forloop.counter}}</td>
 
+<<<<<<< HEAD
                   <td>{{i.vehicle.parkingnumber}}</td>
                   <td>{{i.vehicle.ownername}}</td>
                 <td>{{i.vehicle.regno}}</td>
+=======
+                  <td>{{i.parkingnumber}}</td>
+                  <td>{{i.ownername}}</td>
+                <td>{{i.regno}}</td>
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
                   <td>
                       <a href="{% url 'view_outgoingdetail' i.id %}" ><i class="fa fa-eye fa-1x"></i></a>
                    | <a href="{% url 'print' i.id %}" ><i class="fa fa-print fa-1x"></i></a>

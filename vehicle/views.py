@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from django.db.models import Q, Sum
+=======
+from django.db.models import Q
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib.auth.models import User
@@ -38,10 +42,20 @@ def user_view_outgoing(request,pid):
     d = {'vehicle': vehicle}
     return render(request, 'user_view_outgoing.html',d)
 
+<<<<<<< HEAD
+=======
+def user_print(request,pid):
+
+    vehicle = Vehicle.objects.get(id=pid)
+
+    d = {'vehicle': vehicle}
+    return render(request,'user_print.html', d)
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
 
 
 
 def userhome(request):
+<<<<<<< HEAD
     if request.method == 'POST':
         query = request.POST.get('search')
         ar_l = Parkings.objects.filter(location__contains=query)
@@ -51,6 +65,13 @@ def userhome(request):
         context = {'details': ar_l, 'msg': ''}
         return render(request, 'user_home.html', context)
     return render(request, 'user_home.html')
+=======
+      uid=request.session['user_id']
+      user=User_login.objects.get(id=uid)
+      vehicle=Vehicle.objects.filter(user=user)
+      context={'vehicle':vehicle}
+      return render(request, 'user_home.html',context)
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
 
 def admin_login(request):
     error = ""
@@ -81,11 +102,16 @@ def admin_home(request):
     yv = Vehicle.objects.filter(pdate=yesterday).count()
     ls = Vehicle.objects.filter(pdate__gte=lasts,pdate__lte=today).count()
     totalv = Vehicle.objects.all().count()
+<<<<<<< HEAD
     total_charges = Booking.objects.aggregate(total=Sum('parkingcharge'))['total']
 
 
     d = {'tv':tv,'yv':yv,'ls':ls,'totalv':totalv,"total":total_charges}
 
+=======
+
+    d = {'tv':tv,'yv':yv,'ls':ls,'totalv':totalv}
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
     return render(request,'admin_home.html',d)
 
 
@@ -197,6 +223,23 @@ def view_incomingdetail(request,pid):
         return redirect('admin_home')
     error = ""
     vehicle = Vehicle.objects.get(id=pid)
+<<<<<<< HEAD
+=======
+    if request.method == 'POST':
+        rm = request.POST['remark']
+        ot = request.POST['outtime']
+        pc = request.POST['parkingcharge']
+        status = "Out"
+        try:
+            vehicle.remark = rm
+            vehicle.outtime = ot
+            vehicle.parkingcharge = pc
+            vehicle.status = status
+            vehicle.save()
+            error = "no"
+        except:
+            error = "yes"
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
 
     d = {'vehicle': vehicle,'error':error}
     return render(request,'view_incomingdetail.html', d)
@@ -205,7 +248,11 @@ def view_incomingdetail(request,pid):
 def manage_outgoingvehicle(request):
     if not request.user.is_authenticated:
         return redirect('admin_login')
+<<<<<<< HEAD
     vehicle = Booking.objects.filter(status="Out" )
+=======
+    vehicle = Vehicle.objects.filter(status="Out")
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
     d = {'vehicle':vehicle}
     return render(request, 'manage_outgoingvehicle.html', d)
 
@@ -213,9 +260,15 @@ def manage_outgoingvehicle(request):
 def view_outgoingdetail(request,pid):
     if not request.user.is_authenticated:
         return redirect('admin_login')
+<<<<<<< HEAD
     book = Booking.objects.get(id=pid)
 
     d = {'vehicle': book}
+=======
+    vehicle = Vehicle.objects.get(id=pid)
+
+    d = {'vehicle': vehicle}
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
     return render(request,'view_outgoingdetail.html', d)
 
 
@@ -435,6 +488,7 @@ def book_slot(request):
 def mybook(request):
     u = request.session['user_id']
     user = User_login.objects.get(id=u)
+<<<<<<< HEAD
 
     bookings = Booking.objects.filter(user=user)
 
@@ -450,6 +504,12 @@ def mybook(request):
         context = {'book': bookings}
     return render(request, 'book.html', context)
 
+=======
+    book=Booking.objects.filter(user=user)
+    context={'book':book}
+    return render(request,'book.html',context)
+    
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
 def out(request,pk):
     booking = Booking.objects.get(id=pk)
 
@@ -471,6 +531,7 @@ def out(request,pk):
 
     return redirect("http://127.0.0.1:8000/mybook")
 
+<<<<<<< HEAD
 
 def user_print(request,pid):
     u = request.session['user_id']
@@ -546,3 +607,12 @@ def total_charges(request):
     }
 
     return render(request, 'admin_home.html', context)
+=======
+    
+
+
+    
+
+
+
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd

@@ -80,6 +80,32 @@ $(document).ready(function() {
 
 
 
+<<<<<<< HEAD
+=======
+
+
+    <form method="post">
+       {% csrf_token %}
+         <tr>
+    <th>Outing Remark :</th>
+    <td>
+    <textarea name="remark" placeholder="" rows="12" cols="14" class="form-control wd-450" required="true"></textarea></td>
+  </tr>
+
+          <tr>
+    <th>Parking Charge :</th>
+    <td>
+    <input type = "text" name="parkingcharge"  class="form-control wd-450" required="true"></td>
+  </tr>
+
+             <tr>
+    <th>Out Time :</th>
+    <td>
+   <input type="time"  name="outtime"  value ="{{vehicle.outtime}}" required=""></td>
+  </tr>
+
+
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
  <tr align="center">
     <td colspan="2"><button type="submit" name="submit" class="btn btn-primary btn-sm">Update</button></td>
   </tr>

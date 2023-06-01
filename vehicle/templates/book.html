@@ -57,6 +57,7 @@
 
               <li class="nav-item">
                 <a class="nav-link" href="/user_add_vehicle">Add Vehicle</a>
+<<<<<<< HEAD
 
 
               <li class="nav-item">
@@ -66,13 +67,29 @@
                 <li class="nav-item">
                 <a class="nav-link" href="/logout">logout </a>
               </li>
+=======
+              </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/logout">logout </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/allparking">All Parking  </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/mybook">my booking  </a>
+              </li>
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
             </ul>
 
           </div>
         </nav>
       </div>
     </header>
+<<<<<<< HEAD
 <h2 class="text-center" style = "font-family : Monotype Corsiva ; color : #E6E6FA">Booking Details</h2>
+=======
+
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
 
     <table bgcolor="#E6E6FA" class='table table-hover' id = example>
         <thead>
@@ -86,10 +103,16 @@
             <th bgcolor="white"scope="col">Location</th>
             <th bgcolor="white"scope="col">Intime</th>
             <th bgcolor="white"scope="col">Outtime</th>
+<<<<<<< HEAD
              <th bgcolor="white"scope="col">parkingfee</th>
             <th bgcolor="white"scope="col">status</th>
             <th bgcolor="white"scope="col">print</th>
 
+=======
+            <th bgcolor="white"scope="col">status</th>
+            <th bgcolor="white"scope="col">action</th>
+              <th bgcolor="white"scope="col">parkingcharge</th>
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
           </tr>
         </thead>
         <tbody>
@@ -104,6 +127,7 @@
             <td bgcolor="white">{{i.outtime}}</td>
               <td bgcolor="white">{{i.parkingcharge}}</td>
             <td bgcolor="white">{{i.status}}</td>
+<<<<<<< HEAD
 
             {% if i.status == "Booked" %}
             <td bgcolor="white"><a href="/out/{{i.id}}"> <button type="button" class="btn btn-danger">out now </button></a></td>
@@ -112,6 +136,12 @@
            <td bgcolor="white"><a href="/user_print/{{i.id}}" ><button type="button" class="btn btn-info">Print</button></a></td>
           </tr>
 
+=======
+            {% if i.status == "Booked" %}
+            <td bgcolor="white"><a href="/out/{{i.id}}"> <button type="button" class="btn btn-danger">out now </button></a></td>
+            {% endif %}
+          </tr>
+>>>>>>> dcdd51991e6451e5b7086f8a13edce25391b62fd
           {% endfor %}
           
         </tbody>
